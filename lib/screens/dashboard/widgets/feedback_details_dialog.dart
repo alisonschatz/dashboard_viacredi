@@ -7,9 +7,9 @@ class FeedbackDetailsDialog extends StatelessWidget {
   final FeedbackData feedback;
 
   const FeedbackDetailsDialog({
-    Key? key,
+    super.key,
     required this.feedback,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +128,7 @@ class FeedbackDetailsDialog extends StatelessWidget {
                 if (feedback.comment != null && feedback.comment!.isNotEmpty) ...[
                   const SizedBox(height: 24),
                   const Text(
-                    'Comentário',
+                    'Comentário', 
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

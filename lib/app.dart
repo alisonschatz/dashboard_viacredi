@@ -19,7 +19,7 @@ class DashboardApp extends StatelessWidget {
       home: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/img/totem/bg.png'),
+            image: AssetImage('assets/img/dash/rect2.png'),
             fit: BoxFit.cover,
           ),
         ),
