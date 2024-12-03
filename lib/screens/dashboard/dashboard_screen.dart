@@ -115,7 +115,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
             const Expanded(
               child: Text(
-                'Painel de Controle',
+                'Painel de Controle 1',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
