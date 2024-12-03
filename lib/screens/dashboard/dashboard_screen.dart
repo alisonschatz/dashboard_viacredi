@@ -96,6 +96,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
+  void _handleLogout() async {
+    bool? confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Confirmar Saída'),
+        content: const Text('Deseja realmente sair do sistema?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.red,
+            ),
+            child: const Text('Sair'),
+          ),
+        ],
+      ),
+    );
+
+    if (confirm == true) {
+      await FirebaseAuth.instance.signOut();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,10 +157,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.logout, color: Colors.white),
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-            },
+            icon: const Icon(Icons.logout),
+            color: Colors.white,
+            // tooltip: 'Sair do sistema',
+            onPressed: _handleLogout,
           ),
         ],
       ),

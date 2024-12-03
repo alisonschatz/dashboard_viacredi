@@ -41,7 +41,8 @@ class _LoginScreenState extends State<LoginScreen> {
           'user-not-found' => 'Usuário não encontrado',
           'wrong-password' => 'Senha incorreta',
           'invalid-email' => 'E-mail inválido',
-          _ => 'Erro ao fazer login: ${e.message}',
+          _ => 'Erro ao fazer login', 
+          // ${e.message}
         };
       });
     } finally {
