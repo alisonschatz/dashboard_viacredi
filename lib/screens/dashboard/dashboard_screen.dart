@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../models/feedback_data.dart';
@@ -98,9 +99,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: const Color(0xFFCFDEE4),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color(0xFF165C7D),
         elevation: 2,
         toolbarHeight: 100,
         title: Row(
@@ -108,25 +109,33 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Image.asset(
-                'assets/img/dash/logo.png',
-                height: 90,
+                'assets/img/dash/logo_white.png',
+                height: 120,
                 fit: BoxFit.contain,
               ),
             ),
             const Expanded(
               child: Text(
-                'Painel de Controle 1',
+                'Painel de Controle',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: Colors.white,
                 ),
               ),
             ),
             const SizedBox(width: 80),
           ],
         ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout, color: Colors.white),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+            },
+          ),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _getFeedbackStream(),
@@ -200,7 +209,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: FeedbackTable(feedbackList: feedbackList),
+                  child: FeedbackTable(
+                    feedbackList: feedbackList,
+                  ),
                 ),
               ),
             ],

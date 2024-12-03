@@ -71,6 +71,7 @@ flutter:
     - assets/img/dash/logo_white.png
     - assets/img/totem/bg.png
     - assets/img/dash/rect2.png
+    - assets/img/dash/favicon.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
