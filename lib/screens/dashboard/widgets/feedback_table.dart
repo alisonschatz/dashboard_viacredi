@@ -53,6 +53,8 @@ class _FeedbackTableState extends State<FeedbackTable> {
     );
   }
 
+  // ... imports e código inicial igual ...
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -73,7 +75,6 @@ class _FeedbackTableState extends State<FeedbackTable> {
               scrollDirection: Axis.horizontal,
               child: DataTable(
                 columns: [
-                  const DataColumn(label: Text('CPF')),
                   DataColumn(
                     label: Row(
                       children: [
@@ -102,13 +103,13 @@ class _FeedbackTableState extends State<FeedbackTable> {
                       ],
                     ),
                   ),
+                  const DataColumn(label: Text('CPF')),
                   const DataColumn(label: Text('Comentário')),
                   const DataColumn(label: Text('Ações')),
                 ],
                 rows: _sortedList.map((feedback) {
                   return DataRow(
                     cells: [
-                      DataCell(Text(feedback.cpf?.isNotEmpty == true ? feedback.cpf! : 'CPF não informado')),
                       DataCell(Text(DateFormat('dd/MM/yyyy').format(feedback.timestamp))),
                       DataCell(
                         Container(
@@ -123,11 +124,12 @@ class _FeedbackTableState extends State<FeedbackTable> {
                           ),
                         ),
                       ),
+                      DataCell(Text(feedback.cpf?.isNotEmpty == true ? feedback.cpf! : 'Não Informado')),
                       DataCell(Text(feedback.comment?.isNotEmpty == true ? 'Sim' : 'Não')),
                       DataCell(
                         TextButton.icon(
                           onPressed: () => _showFeedbackDetails(context, feedback),
-                          icon: const Icon(Icons.visibility , color: Colors.green),                          
+                          icon: const Icon(Icons.visibility, color: Colors.green),
                           label: const Text('Ver detalhes'),
                           style: TextButton.styleFrom(
                             foregroundColor: Colors.green,
@@ -143,5 +145,4 @@ class _FeedbackTableState extends State<FeedbackTable> {
         ),
       ),
     );
-  }
-}
+  }}
