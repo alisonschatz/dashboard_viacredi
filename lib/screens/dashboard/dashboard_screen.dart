@@ -155,7 +155,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Image.asset(
                 'assets/img/dash/logo_white.png',
-                height: 120,
+                height: 80,
                 fit: BoxFit.contain,
               ),
             ),
@@ -176,8 +176,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            color: Colors.white,
-            // tooltip: 'Sair do sistema',
+            tooltip: 'Sair do sistema',
             onPressed: _handleLogout,
           ),
         ],
@@ -206,60 +205,65 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
           Map<String, double> averageStarRatings = _calculateAverageStarRatings(feedbackList);
 
-          return CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: _buildPeriodSelector(),
-              ),
-              SliverPadding(
-                padding: const EdgeInsets.all(16.0),
-                sliver: SliverGrid(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 1.5,
-                    crossAxisSpacing: 16.0,
-                    mainAxisSpacing: 16.0,
+          return Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 1200),
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: _buildPeriodSelector(),
                   ),
-                  delegate: SliverChildListDelegate([
-                    KpiCard(
-                      title: 'Total de Avaliações',
-                      value: feedbackList.length.toString(),
-                      icon: Icons.assessment,
-                      color: Colors.blue,
+                  SliverPadding(
+                    padding: const EdgeInsets.all(16.0),
+                    sliver: SliverGrid(
+                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 400,
+                        childAspectRatio: 1.5,
+                        crossAxisSpacing: 16.0,
+                        mainAxisSpacing: 16.0,
+                      ),
+                      delegate: SliverChildListDelegate([
+                        KpiCard(
+                          title: 'Total de Avaliações',
+                          value: feedbackList.length.toString(),
+                          icon: Icons.assessment,
+                          color: Colors.blue,
+                        ),
+                        KpiCard(
+                          title: 'Média NPS',
+                          value: _calculateAverageNPS(feedbackList).toStringAsFixed(1),
+                          icon: Icons.star,
+                          color: Colors.amber,
+                        ),
+                        KpiCard(
+                          title: 'Comentários',
+                          value: feedbackList.where((f) => f.comment?.isNotEmpty ?? false).length.toString(),
+                          icon: Icons.comment,
+                          color: Colors.green,
+                        ),
+                      ]),
                     ),
-                    KpiCard(
-                      title: 'Média NPS',
-                      value: _calculateAverageNPS(feedbackList).toStringAsFixed(1),
-                      icon: Icons.star,
-                      color: Colors.amber,
-                    ),
-                    KpiCard(
-                      title: 'Comentários',
-                      value: feedbackList.where((f) => f.comment?.isNotEmpty ?? false).length.toString(),
-                      icon: Icons.comment,
-                      color: Colors.green,
-                    ),
-                  ]),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: StarRatingsCard(
-                    averageRatings: averageStarRatings,
-                    totalRatings: feedbackList.length,
                   ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: FeedbackTable(
-                    feedbackList: feedbackList,
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: StarRatingsCard(
+                        averageRatings: averageStarRatings,
+                        totalRatings: feedbackList.length,
+                      ),
+                    ),
                   ),
-                ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: FeedbackTable(
+                        feedbackList: feedbackList,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
+            ),
           );
         },
       ),

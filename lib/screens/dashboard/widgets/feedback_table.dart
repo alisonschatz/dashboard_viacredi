@@ -53,8 +53,6 @@ class _FeedbackTableState extends State<FeedbackTable> {
     );
   }
 
-  // ... imports e código inicial igual ...
-
   @override
   Widget build(BuildContext context) {
     return Card(

@@ -7,12 +7,12 @@ class KpiCard extends StatelessWidget {
   final Color color;
 
   const KpiCard({
-    super.key,
+    Key? key,
     required this.title,
     required this.value,
     required this.icon,
     required this.color,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +24,30 @@ class KpiCard extends StatelessWidget {
           children: [
             Icon(icon, size: 32, color: color),
             const SizedBox(height: 8),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
+            Flexible(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
               ),
-              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 4),
-            Text(
-              value,
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: color,
+            Flexible(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  value,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: color,
+                  ),
+                ),
               ),
             ),
           ],
