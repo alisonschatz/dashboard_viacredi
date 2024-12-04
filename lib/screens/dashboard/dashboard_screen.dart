@@ -64,7 +64,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               const Text(
                 'Período selecionado: ',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -84,11 +84,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     },
                   );
                 },
-                icon: const Icon(Icons.calendar_today, size: 20),
+                icon: const Icon(Icons.calendar_today, size: 24),
                 label: Text(
                   DateFormat('MMMM/y', 'pt_BR').format(selectedDate),
                   style: const TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -162,17 +162,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 fit: BoxFit.contain,
               ),
             ),
-            const Expanded(
-              child: Text(
-                'Painel de Controle',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+            if (MediaQuery.of(context).size.width > 580)
+              const Expanded(
+                child: Text(
+                  'Painel de Controle',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-            ),
             const SizedBox(width: 80),
           ],
         ),
