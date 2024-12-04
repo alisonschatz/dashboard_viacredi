@@ -155,7 +155,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Image.asset(
                 'assets/img/dash/logo_white.png',
-                height: 80,
+                height: 120,
                 fit: BoxFit.contain,
               ),
             ),
