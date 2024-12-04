@@ -64,7 +64,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               const Text(
                 'Período selecionado: ',
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -84,11 +84,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     },
                   );
                 },
-                icon: const Icon(Icons.calendar_today, size: 24),
+                icon: const Icon(Icons.calendar_today, size: 20),
                 label: Text(
                   DateFormat('MMMM/y', 'pt_BR').format(selectedDate),
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
