@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../models/feedback_data.dart';
+import '../login/login_screen.dart';
 import 'widgets/month_year_picker.dart';
 import 'widgets/star_ratings_card.dart';
 import 'widgets/feedback_table.dart';
@@ -118,8 +119,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
 
-    if (confirm == true) {
-      await FirebaseAuth.instance.signOut();
+    if (confirm == true && mounted) {
+      try {
+        await FirebaseAuth.instance.signOut();
+        if (mounted) {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => const LoginScreen()),
+            (route) => false,
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Erro ao realizar logout'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
     }
   }
 
@@ -137,7 +155,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Image.asset(
                 'assets/img/dash/logo_white.png',
-                height: 120,
+                height: 80,
                 fit: BoxFit.contain,
               ),
             ),

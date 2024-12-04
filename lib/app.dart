@@ -25,7 +25,11 @@ class DashboardApp extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           
-          return snapshot.hasData ? const DashboardScreen() : const LoginScreen();
+          if (!snapshot.hasData || snapshot.data == null) {
+            return const LoginScreen();
+          }
+          
+          return const DashboardScreen();
         },
       ),
     );
