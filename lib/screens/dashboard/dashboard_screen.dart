@@ -56,42 +56,45 @@ class _DashboardScreenState extends State<DashboardScreen> {
       margin: const EdgeInsets.all(16),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Período selecionado: ',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            TextButton.icon(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return MonthYearPicker(
-                      initialDate: selectedDate,
-                      onDateSelected: (DateTime date) {
-                        setState(() {
-                          selectedDate = date;
-                        });
-                      },
-                    );
-                  },
-                );
-              },
-              icon: const Icon(Icons.calendar_today, size: 24),
-              label: Text(
-                DateFormat('MMMM/y', 'pt_BR').format(selectedDate),
-                style: const TextStyle(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Período selecionado: ',
+                style: TextStyle(
                   fontSize: 18,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-          ],
+              TextButton.icon(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return MonthYearPicker(
+                        initialDate: selectedDate,
+                        onDateSelected: (DateTime date) {
+                          setState(() {
+                            selectedDate = date;
+                          });
+                        },
+                      );
+                    },
+                  );
+                },
+                icon: const Icon(Icons.calendar_today, size: 24),
+                label: Text(
+                  DateFormat('MMMM/y', 'pt_BR').format(selectedDate),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
