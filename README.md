@@ -2,6 +2,12 @@
 
 **🌐 Deploy disponível:** [Dashboard Viacredi](https://dashboard-viacredi.vercel.app)  
 
+## 🔑 **Credenciais de Acesso**  
+
+Para acessar o dashboard, utilize as credenciais abaixo:  
+- **Usuário:** admin@viacredi.com.br  
+- **Senha:** viacredi  
+
 ---
 
 ## 📖 **Descrição**  
@@ -42,15 +48,7 @@ Os dados exibidos no dashboard são coletados pelo aplicativo **Feedback_Viacred
 
 ---
 
-## 🔑 **Credenciais de Acesso**  
-
-Para acessar o dashboard, utilize as credenciais abaixo:  
-- **Usuário:** admin@viacredi.com.br  
-- **Senha:** viacredi  
-
----
-
 ## 📬 **Contato**  
 
 Em caso de dúvidas ou sugestões, entre em contato:  
-**E-mail:** alisonschatz1@gmail.com  
+**E-mail:** alisonschatz1@gmail.com
