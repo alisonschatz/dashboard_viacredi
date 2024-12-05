@@ -38,7 +38,7 @@ O **DashBoard_Viacredi** é uma aplicação web projetada para exibir os dados c
 
 Os dados exibidos no dashboard são coletados pelo aplicativo **Feedback_Viacredi**:  
 - **Deploy:** [Feedback Viacredi](https://feedback-viacredi.vercel.app)  
-- **Repositório:** [feedback_viacredi](https://github.com/alisonschatz/feedback_viacredi)  
+- **Repositório:** [feedback_viacredi](https://github.com/alisonschatz/app_viacredi_v2)  
 
 ---
 
